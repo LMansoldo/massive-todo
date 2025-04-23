@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
-	base: '/finance-pal/',
+	base: '/massive-todo/',
 	plugins: [react()],
 	build: {
 		sourcemap: process.env.NODE_ENV !== 'production',
@@ -17,8 +17,6 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			'@modules': path.resolve(__dirname, './src/modules'),
-			'@pages': path.resolve(__dirname, './src/pages'),
 			'@shared': path.resolve(__dirname, './src/shared')
 		},
 	},

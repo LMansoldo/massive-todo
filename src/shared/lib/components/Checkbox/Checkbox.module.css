@@ -31,8 +31,8 @@
 }
 
 .checkboxInput:checked ~ .checkmark {
-	background-color: var(--color-primary-500);
-	border-color: var(--color-primary-500);
+	background-color: var(--color-success-500);
+	border-color: var(--color-success-500);
 }
 
 .checkboxInput:disabled ~ .checkmark {
