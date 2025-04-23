@@ -1,0 +1,80 @@
+.tableContainer {
+	overflow: hidden;
+	box-shadow:
+		0 1px 3px 0 rgba(0, 0, 0, 0.1),
+		0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	border-radius: 0.5rem;
+	border: 1px solid var(--color-primary-300);
+}
+
+.table {
+	min-width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	width: 100%;
+	border-bottom: 1px solid var(--color-primary-400);
+}
+
+.tableHead {
+	background-color: var(--color-primary-600);
+}
+
+.tableBody {
+	background-color: var(--color-primary-600);
+}
+
+.tableRow {
+	transition: background-color 0.2s ease;
+}
+
+.tableRowEven {
+	background-color: var(--color-primary-500);
+}
+
+.tableRowHoverable:hover {
+	background-color: var(--color-primary-400);
+}
+
+.headerCell {
+	padding: 0.75rem 1.5rem;
+	font-size: 0.75rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--color-secondary-100);
+}
+
+.headerCellLeft {
+	text-align: left;
+}
+
+.headerCellCenter {
+	text-align: center;
+}
+
+.headerCellRight {
+	text-align: right;
+}
+
+.cell {
+	padding: 1rem 1.5rem;
+	font-size: 0.875rem;
+	white-space: nowrap;
+	color: var(--color-secondary-100);
+}
+
+.cellLeft {
+	text-align: left;
+}
+
+.cellCenter {
+	text-align: center;
+}
+
+.cellRight {
+	text-align: right;
+}
+
+.divider {
+	border-bottom: 1px solid var(--color-secondary-800);
+}
