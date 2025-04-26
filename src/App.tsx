@@ -1,8 +1,14 @@
-import React from 'react';
-
+import { TodoProvider } from '@features/todo/context/TodoContext';
+import TodoListContainer from '@features/todo/view/TodoListContainer';
 function App() {
   return (
-    <div>a</div>
+    <div className="container">
+      <TodoProvider>
+        <div className="app">
+          <TodoListContainer />
+        </div>
+      </TodoProvider>
+    </div>
   );
 }
 
