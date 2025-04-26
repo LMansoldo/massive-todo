@@ -9,7 +9,9 @@
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"paths": {
-			"@shared/*": ["./src/shared/*"]
+			"@shared/*": ["./src/shared/*"],
+			"@entities/*": ["./src/entities/*"],
+			"@features/*": ["./src/features/*"]
 		},
 
 		/* Bundler mode */
