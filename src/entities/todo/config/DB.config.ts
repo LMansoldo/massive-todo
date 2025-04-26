@@ -3,7 +3,7 @@ import { IDBConfig, TStorageType } from "@shared/types/db.type";
 
 
 const defaultConfig: IDBConfig = {
-	storageType: EStorageType.LocalStorage,
+	storageType: EStorageType.LocalStorage, // To change the default storage type
 	localStorageConfig: {
 		key: 'todo-app-data'
 	},

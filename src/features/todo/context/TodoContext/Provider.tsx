@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import { TodoRepositoryFacade } from "@entities/todo/repo/TodoRepository";
+import { TodoRepositoryFacade } from "@entities/todo";
 import { initialState, TodoContext, todoReducer } from "@features/todo/context/TodoContext";
 
 

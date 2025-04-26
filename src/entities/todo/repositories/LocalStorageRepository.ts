@@ -1,5 +1,5 @@
 import { ITodoItemData } from '@features/todo/model/todo.types';
-import { getDBConfig } from '@shared/config/DB.config';
+import { getDBConfig } from '@entities/todo/config/DB.config';
 
 export class LocalStorageRepository {
   async saveTodos(todos: Array<ITodoItemData>): Promise<void> {
