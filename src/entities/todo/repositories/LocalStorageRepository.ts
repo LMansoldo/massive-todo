@@ -1,5 +1,6 @@
 import { ITodoItemData } from '@features/todo/model/todo.types';
-import { getDBConfig } from '@shared/config/DB.config';
+import { getDBConfig } from '@entities/todo/config/DB.config';
+import { ITodoEntity } from '@shared/models/todo';
 
 export class LocalStorageRepository {
   async saveTodos(todos: Array<ITodoItemData>): Promise<void> {
@@ -36,8 +37,7 @@ export class LocalStorageRepository {
     try {
       const parsedData = JSON.parse(data);
       
-      // Convert ISO date strings back to Date objects
-      const todos = parsedData.todos.map((todo: any) => ({
+      const todos = parsedData.todos.map((todo: ITodoEntity) => ({
         ...todo,
         dueDate: typeof todo.dueDate === 'string' ? new Date(todo.dueDate) : todo.dueDate
       }));

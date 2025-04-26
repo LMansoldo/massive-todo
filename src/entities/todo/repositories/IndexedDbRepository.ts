@@ -1,5 +1,6 @@
 import { ITodoItemData } from '@features/todo/model/todo.types';
-import { getDBConfig } from '@shared/config/DB.config';
+import { getDBConfig } from '@entities/todo/config/DB.config';
+import { ITodoEntity } from '@shared/models/todo';
 
 export class IndexedDBRepository {
   private openDatabase(): Promise<IDBDatabase> {
@@ -82,8 +83,7 @@ export class IndexedDBRepository {
           if (!request.result) {
             resolve(null);
           } else {
-            // Convert ISO date strings back to Date objects
-            const todos = request.result.todos.map((todo: any) => ({
+            const todos = request.result.todos.map((todo: ITodoEntity) => ({
               ...todo,
               dueDate: typeof todo.dueDate === 'string' ? new Date(todo.dueDate) : todo.dueDate
             }));

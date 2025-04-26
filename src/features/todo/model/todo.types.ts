@@ -1,9 +1,6 @@
-export interface ITodoItemData {
-	id: string;
-	description: string;
-	dueDate: Date;
-	completed: boolean;
-}
+import { ITodoEntity } from "@shared/models/todo";
+
+export type ITodoItemData = ITodoEntity
 
 export interface ITodoItemActions {
 	onToggle: (id: string) => void;
