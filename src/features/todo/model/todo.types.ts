@@ -21,6 +21,10 @@ export interface ITodoContextType {
 export interface ITodoState {
   todos: Array<ITodoItemData & { id: string }>;
   pendingChanges: Set<string>;
+  snapshot: {
+    todos: Array<ITodoItemData & { id: string }>;
+    pendingChanges: Set<string>;
+  } | null;
 }
 
 export type TTodoAction =
