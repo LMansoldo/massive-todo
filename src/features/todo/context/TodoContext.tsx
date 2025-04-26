@@ -1,5 +1,12 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { ITodoContextType, ITodoState, TTodoAction } from '@features/todo/model/todo.types';
+import { TodoRepositoryFacade } from '@entities/todo/repo/TodoRepository';
+
+const addPendingChange = (pendingChanges: Set<string>, id: string) => {
+  const newSet = new Set(pendingChanges);
+  newSet.add(id);
+  return newSet;
+};
 
 function todoReducer(state: ITodoState, action: TTodoAction): ITodoState {
   switch (action.type) {
@@ -11,80 +18,46 @@ function todoReducer(state: ITodoState, action: TTodoAction): ITodoState {
         dueDate: action.payload.dueDate,
         completed: false
       };
-      
-      const pendingChanges = new Set(state.pendingChanges);
-      pendingChanges.add(id);
 
       return {
         todos: [...state.todos, newTodo],
-        pendingChanges
+        pendingChanges: addPendingChange(state.pendingChanges, id)
       };
     }
 
     case 'UPDATE_TODO': {
       const { id, ...updates } = action.payload;
-      const todoIndex = state.todos.findIndex(todo => todo.id === id);
-      
-      if (todoIndex === -1) {
-        return state;
-      }
-      
-      const updatedTodos = [...state.todos];
-      updatedTodos[todoIndex] = {
-        ...updatedTodos[todoIndex],
-        ...updates
-      };
-      
-      const pendingChanges = new Set(state.pendingChanges);
-      pendingChanges.add(id);
+      const idx = state.todos.findIndex(todo => todo.id === id);
 
-      return {
-        todos: updatedTodos,
-        pendingChanges
-      };
+      if (idx === -1) return state;
+
+      const todos = [...state.todos];
+
+      todos[idx] = { ...todos[idx], ...updates };
+
+      return { todos, pendingChanges: addPendingChange(state.pendingChanges, id) };
     }
 
     case 'TOGGLE_TODO': {
       const { id } = action.payload;
-      const todoIndex = state.todos.findIndex(todo => todo.id === id);
-      
-      if (todoIndex === -1) {
-        return state;
-      }
-      
-      const updatedTodos = [...state.todos];
-      updatedTodos[todoIndex] = {
-        ...updatedTodos[todoIndex],
-        completed: !updatedTodos[todoIndex].completed
-      };
-      
-      const pendingChanges = new Set(state.pendingChanges);
-      pendingChanges.add(id);
+      const idx = state.todos.findIndex(todo => todo.id === id);
 
-      return {
-        todos: updatedTodos,
-        pendingChanges
-      };
+      if (idx === -1) return state;
+
+      const todos = [...state.todos];
+
+      todos[idx] = { ...todos[idx], completed: !todos[idx].completed };
+
+      return { todos, pendingChanges: addPendingChange(state.pendingChanges, id) };
     }
 
     case 'DELETE_TODO': {
       const { id } = action.payload;
-      const todoIndex = state.todos.findIndex(todo => todo.id === id);
-      
-      if (todoIndex === -1) {
-        return state;
-      }
-      
-      const updatedTodos = state.todos.filter(todo => todo.id !== id);
-      
-      const pendingChanges = new Set(state.pendingChanges);
-      pendingChanges.add(id);
+      const todos = state.todos.filter(todo => todo.id !== id);
 
-      return {
-        todos: updatedTodos,
-        pendingChanges
-      };
+      return { todos, pendingChanges: addPendingChange(state.pendingChanges, id) };
     }
+
 
     case 'COMMIT_CHANGES':
       return {
@@ -119,17 +92,30 @@ const TodoContext = createContext<ITodoContextType | undefined>(undefined);
 
 export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
+  const repository = new TodoRepositoryFacade();
 
   useEffect(() => {
     const loadTodos = async () => {
-			// Add the repo here
+      try {
+        const data = await repository.loadTodos();
+        if (data) {
+          dispatch({ type: 'LOAD_TODOS', payload: data });
+        }
+      } catch (error) {
+        console.error('Failed to load todos:', error);
+      }
     };
 
     loadTodos();
   }, []);
 
   const commitChanges = async () => {
-		// Add the repo here
+    try {
+      await repository.saveTodos(state.todos);
+      dispatch({ type: 'COMMIT_CHANGES' });
+    } catch (error) {
+      console.error('Failed to commit changes:', error);
+    }
   };
 
   const cancelChanges = () => {

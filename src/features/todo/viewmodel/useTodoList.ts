@@ -34,13 +34,6 @@ export const useTodoList: any = () => {
     });
   };
 
-  const handleUpdateTodoDueDate = (id: string) => {
-    dispatch({
-      type: 'UPDATE_TODO',
-      payload: { id }
-    });
-  };
-
   const handleDeleteTodo = (id: string) => {
     dispatch({
       type: 'DELETE_TODO',
@@ -76,7 +69,6 @@ export const useTodoList: any = () => {
       handleAddTodo,
       handleToggleTodo,
       handleUpdateTodoDescription,
-      handleUpdateTodoDueDate,
       handleDeleteTodo,
       handleCommitChanges,
       handleCancelChanges,
