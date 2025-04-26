@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '@features/todo/view/TodoList.module.css';
-import { useTodoListContext } from '@features/todo/context/TodoListContext';
+import { useTodoListContext } from '@features/todo/context/TodoListContext/TodoListContext';
 import Button from '@shared/lib/components/Button/Button';
 import { EButtonVariant } from '@shared/enums/button.enum';
 

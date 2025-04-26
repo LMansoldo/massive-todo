@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTodoItem } from '@features/todo/viewmodel/useTodoItem';
 import TodoItemView from '@features/todo/view/TodoItems/TodoItem/TodoItemView';
-import { useTodoListContext } from '@features/todo/context/TodoListContext';
+import { useTodoListContext } from '@features/todo/context/TodoListContext/TodoListContext';
 
 interface Props {
   id: string;

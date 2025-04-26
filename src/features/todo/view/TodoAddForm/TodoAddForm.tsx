@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '@features/todo/view/TodoList.module.css';
 import { TextField } from '@shared/lib/components/TextField/TextField';
 import { Button } from '@shared/lib/components/Button/Button';
-import { useTodoListContext } from '@features/todo/context/TodoListContext';
+import { useTodoListContext } from '@features/todo/context/TodoListContext/TodoListContext';
 
 const TodoAddForm: React.FC = () => {
   const { state, actions } = useTodoListContext();
