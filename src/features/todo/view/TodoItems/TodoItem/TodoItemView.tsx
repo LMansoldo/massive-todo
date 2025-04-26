@@ -65,7 +65,11 @@ const TodoItemView: React.FC<TodoItemViewProps> = ({
             </>
           )}
         </Table.Cell>
-        <Table.Cell align="center">{formattedDate}</Table.Cell>
+        <Table.Cell align="center">
+          <span className={styles.todoDueDate}>
+            {formattedDate}
+          </span>
+        </Table.Cell>
         <Table.Cell align="center">
           <Checkbox
             checked={completed}
@@ -75,6 +79,7 @@ const TodoItemView: React.FC<TodoItemViewProps> = ({
         <Table.Cell align="center">
           <Button 
             onClick={onDelete}
+            className={styles.deleteButton}
             aria-label="Delete todo"
           >
             <GoTrash />
