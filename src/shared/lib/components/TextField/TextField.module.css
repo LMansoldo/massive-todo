@@ -1,0 +1,64 @@
+.container {
+	margin-bottom: 1rem;
+	width: 100%;
+}
+
+.label {
+	display: block;
+	font-size: 0.875rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	color: var(--color-secondary-700);
+}
+
+.requiredMark {
+	color: var(--color-danger-500);
+	margin-left: 0.25rem;
+}
+
+.input {
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: var(--color-secondary-700);
+	background-color: #fff;
+	border: 1px solid var(--color-secondary-300);
+	border-radius: 0.25rem;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	transition:
+		border-color 0.15s ease-in-out,
+		box-shadow 0.15s ease-in-out;
+
+	&:focus {
+		outline: none;
+		border-color: var(--color-primary-400);
+		box-shadow: 0 0 0 3px var(--color-primary-200);
+	}
+
+	&::placeholder {
+		color: var(--color-secondary-400);
+		opacity: 1;
+	}
+
+	&:disabled {
+		background-color: var(--color-secondary-100);
+		opacity: 0.7;
+		cursor: not-allowed;
+	}
+}
+
+.errorInput {
+	border-color: var(--color-danger-500);
+
+	&:focus {
+		box-shadow: 0 0 0 3px var(--color-danger-200);
+	}
+}
+
+.errorMessage {
+	margin-top: 0.25rem;
+	font-size: 0.75rem;
+	font-style: italic;
+	color: var(--color-danger-500);
+}
