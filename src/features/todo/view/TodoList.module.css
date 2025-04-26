@@ -1,0 +1,62 @@
+.title {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+	color: #333;
+	text-align: center;
+}
+
+.pendingChanges {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1rem 0;
+	padding: 0.5rem;
+	border-radius: 4px;
+}
+
+.pendingCount {
+	font-weight: bold;
+	color: #666;
+}
+
+.actions {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.addForm {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 1rem;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: space-between;
+
+	& > button {
+		height: 3rem;
+		margin-bottom: -0.8rem;
+	}
+}
+
+.inputContainer {
+	width: 70%;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+.todoList {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.emptyState {
+	text-align: center;
+	padding: 2rem;
+	color: #999;
+	font-style: italic;
+	border: 1px dashed #ddd;
+	border-radius: 4px;
+}
