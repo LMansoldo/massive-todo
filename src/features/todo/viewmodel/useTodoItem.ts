@@ -17,7 +17,7 @@ export const useTodoItem = (
   };
 
   const handleBlur = () => {
-    if (editedDescription.trim() !== todoItem.description) {
+    if (editedDescription.trim() !== todoItem.description && editedDescription.trim() !== '') {
       actions.onUpdateDescription(todoItem.id, editedDescription.trim());
     }
     

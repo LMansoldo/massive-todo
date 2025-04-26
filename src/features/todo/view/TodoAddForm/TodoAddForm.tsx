@@ -9,26 +9,16 @@ const TodoAddForm: React.FC = () => {
 
   return (
     <form onSubmit={actions.handleAddTodo} className={styles.addForm}>
-      <div className={`${styles.inputContainer}`}>
         <TextField
+          className="w-100 col-11"
           label="New Task"
           id="newTodoDescription"
           type="text"
           placeholder="Insert the description"
           value={state.newTodoDescription}
-          className="col-10"
           onChange={(e) => actions.handleNewTodoDescriptionChange(e.target.value)}
         />
-        <TextField
-          label="Due Date"
-          id='newTodoDueDate'
-          type="date"
-          value={state.newTodoDueDate.toISOString().split('T')[0]}
-          className="col-10"
-          onChange={(e) => actions.handleNewTodoDateChange(new Date(e.target.value))}
-        />
-      </div>
-      <Button type="submit" >
+      <Button type="submit" className="col-2" disabled={state.newTodoDescription.trim() === ''}>
         Add Task
       </Button>
     </form>

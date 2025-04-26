@@ -4,7 +4,6 @@ import { useTodoContext } from '@features/todo/context/TodoContext';
 export const useTodoList: any = () => {
   const { state, dispatch, commitChanges, cancelChanges } = useTodoContext();
   const [newTodoDescription, setNewTodoDescription] = useState('');
-  const [newTodoDueDate, setNewTodoDueDate] = useState<Date>(new Date());
 
   const handleAddTodo = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +12,7 @@ export const useTodoList: any = () => {
         type: 'ADD_TODO',
         payload: {
           description: newTodoDescription.trim(),
-          dueDate: newTodoDueDate
+          dueDate: new Date()
         }
       });
       setNewTodoDescription('');
@@ -53,16 +52,11 @@ export const useTodoList: any = () => {
     setNewTodoDescription(value);
   };
 
-  const handleNewTodoDateChange = (value: Date) => {
-    setNewTodoDueDate(value);
-  };
-
 
   return {
     state: {
       todos: state.todos,
       newTodoDescription,
-      newTodoDueDate,
       pendingChangesCount: state.pendingChanges.size,
     },
     actions: {
@@ -72,8 +66,7 @@ export const useTodoList: any = () => {
       handleDeleteTodo,
       handleCommitChanges,
       handleCancelChanges,
-      handleNewTodoDescriptionChange,
-      handleNewTodoDateChange,
+      handleNewTodoDescriptionChange
     }
   };
 };
