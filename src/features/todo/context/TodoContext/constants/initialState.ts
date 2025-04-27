@@ -1,4 +1,4 @@
-import { ITodoState } from "@features/todo/model/todo.types";
+import { ITodoState } from "@features/todo/model/types/todo.types";
 
 export const initialState: ITodoState = {
 	todos: [],

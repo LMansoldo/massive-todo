@@ -1,4 +1,4 @@
-import { ITodoState } from "@features/todo/model/todo.types";
+import { ITodoState } from "@features/todo/model/types/todo.types";
 
 export const addPendingChange = (pendingChanges: Set<string>, id: string) => {
 	const newSet = new Set(pendingChanges);

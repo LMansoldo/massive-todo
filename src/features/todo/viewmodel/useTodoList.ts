@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useTodoContext } from '@features/todo/context/TodoContext';
-import { ITodoListViewModel } from '@features/todo/model/todo.types';
+import { ITodoListViewModel } from '@features/todo/model/types/todo.types';
 
 export const useTodoList = (): ITodoListViewModel => {
   const { state, dispatch, commitChanges, cancelChanges } = useTodoContext();

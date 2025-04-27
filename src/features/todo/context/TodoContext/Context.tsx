@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { ITodoContextType } from '@features/todo/model/todo.types';
+import { ITodoContextType } from '@features/todo/model/types/todo.types';
 
 const TodoContext = createContext<ITodoContextType | undefined>(undefined);
 

@@ -1,5 +1,5 @@
-import { ITodoItemData } from '@features/todo/model/todo.types';
-import { getDBConfig } from '@entities/todo/config/DB.config';
+import { ITodoItemData } from '@features/todo/model/types/todo.types';
+import { getDBConfig } from '@features/todo/model/config/DB.config';
 import { ITodoEntity } from '@shared/models/todo';
 
 export class IndexedDBRepository {

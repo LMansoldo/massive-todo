@@ -1,5 +1,5 @@
 import { ITodoEntity, TodoRepository } from "@shared/models/todo";
-import { TodoRepositoryFactory } from "@entities/todo/factories/todoRepositoryFactory";
+import { TodoRepositoryFactory } from "@features/todo/model/factory/todoRepositoryFactory";
 
 export class TodoRepositoryFacade {
   private repository: TodoRepository;

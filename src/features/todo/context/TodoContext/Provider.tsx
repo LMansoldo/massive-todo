@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useReducer } from "react";
-import { TodoRepositoryFacade } from "@entities/todo";
+import { TodoRepositoryFacade } from "@features/todo/model";
 import { initialState, TodoContext, todoReducer } from "@features/todo/context/TodoContext";
 
 

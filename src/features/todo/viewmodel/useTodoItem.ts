@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ITodoItemActions, ITodoItemData } from '@features/todo/model/todo.types';
+import { ITodoItemActions, ITodoItemData } from '@features/todo/model/types/todo.types';
 
 export const useTodoItem = (
   todoItem: ITodoItemData,

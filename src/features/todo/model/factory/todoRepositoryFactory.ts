@@ -1,7 +1,7 @@
-import { getDBConfig } from "@entities/todo/config/DB.config";
+import { getDBConfig } from "@features/todo/model/config/DB.config";
 import { TodoRepository } from "@shared/models/todo";
-import { IndexedDBRepository } from "@entities/todo/repositories/IndexedDbRepository";
-import { LocalStorageRepository } from "@entities/todo/repositories/LocalStorageRepository";
+import { IndexedDBRepository } from "@features/todo/model/repositories/IndexedDbRepository";
+import { LocalStorageRepository } from "@features/todo/model/repositories/LocalStorageRepository";
 
 export class TodoRepositoryFactory {
   static createRepository(type?: string): TodoRepository {

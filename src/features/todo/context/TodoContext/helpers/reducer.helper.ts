@@ -1,4 +1,4 @@
-import { ITodoState, TTodoAction } from "@features/todo/model/todo.types";
+import { ITodoState, TTodoAction } from "@features/todo/model/types/todo.types";
 import { addPendingChange, createSnapshotIfNeeded } from "@features/todo/context/TodoContext/helpers/todoContext.helper";
 
 export function todoReducer(state: ITodoState, action: TTodoAction): ITodoState {

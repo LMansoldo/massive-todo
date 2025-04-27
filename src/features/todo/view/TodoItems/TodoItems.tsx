@@ -2,7 +2,7 @@ import React from 'react';
 import { useTodoListContext } from '@features/todo/context/TodoListContext/TodoListContext';
 import TodoItemContainer from '@features/todo/view/TodoItems/TodoItem/TodoItemContainer';
 import { Table } from '@shared/lib/components/Table/Table';
-import { ITodoItemData } from '@features/todo/model/todo.types';
+import { ITodoItemData } from '@features/todo/model/types/todo.types';
 
 const TodoItems: React.FC = () => {
   const { state } = useTodoListContext();
