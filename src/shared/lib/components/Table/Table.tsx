@@ -32,15 +32,15 @@ const Table = ({
   );
 };
 
-const Head = ({ children, className = '' }: HeadProps) => {
+const Head = React.memo(({ children, className = '' }: HeadProps) => {
   return (
     <thead className={`${styles.tableHead} ${className}`}>
       {children}
     </thead>
   );
-};
+});
 
-const Body = ({ children, className = '' }: BodyProps) => {
+const Body = React.memo(({ children, className = '' }: BodyProps) => {
   const { striped } = useContext(TableContext);
   
   return (
@@ -56,9 +56,9 @@ const Body = ({ children, className = '' }: BodyProps) => {
       })}
     </tbody>
   );
-};
+});
 
-const Row = ({ children, className = '', isEven = false }: RowProps) => {
+const Row = React.memo(({ children, className = '', isEven = false }: RowProps) => {
   const { hoverable } = useContext(TableContext);
   
   return (
@@ -73,9 +73,9 @@ const Row = ({ children, className = '', isEven = false }: RowProps) => {
       {children}
     </tr>
   );
-};
+});
 
-const HeaderCell = ({
+const HeaderCell = React.memo(({
   children,
   className = '',
   align = 'left'
@@ -94,9 +94,9 @@ const HeaderCell = ({
       {children}
     </th>
   );
-};
+});
 
-const Cell = ({
+const Cell = React.memo(({
   children,
   className = '',
   align = 'left',
@@ -116,7 +116,7 @@ const Cell = ({
       {children}
     </td>
   );
-};
+});
 
 Table.Head = Head;
 Table.Body = Body;

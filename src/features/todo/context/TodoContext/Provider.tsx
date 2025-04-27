@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { TodoRepositoryFacade } from "@entities/todo";
 import { initialState, TodoContext, todoReducer } from "@features/todo/context/TodoContext";
 
@@ -22,21 +22,28 @@ export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children
     loadTodos();
   }, []);
 
-  const commitChanges = async () => {
+  const commitChanges = useCallback(async () => {
     try {
       await repository.saveTodos(state.todos);
       dispatch({ type: 'COMMIT_CHANGES' });
     } catch (error) {
       console.error('Failed to commit changes:', error);
     }
-  };
+  }, [repository, state.todos, dispatch]);
 
-  const cancelChanges = () => {
+  const cancelChanges = useCallback(() => {
     dispatch({ type: 'CANCEL_CHANGES' });
-  };
+  }, [dispatch]);
+
+  const value = useMemo(() => ({
+    state,
+    dispatch,
+    commitChanges,
+    cancelChanges
+  }), [state, dispatch, commitChanges, cancelChanges]);
 
   return (
-    <TodoContext.Provider value={{ state, dispatch, commitChanges, cancelChanges }}>
+    <TodoContext.Provider value={value}>
       {children}
     </TodoContext.Provider>
   );

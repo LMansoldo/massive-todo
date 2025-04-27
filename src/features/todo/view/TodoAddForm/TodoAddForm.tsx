@@ -4,7 +4,7 @@ import { TextField } from '@shared/lib/components/TextField/TextField';
 import { Button } from '@shared/lib/components/Button/Button';
 import { useTodoListContext } from '@features/todo/context/TodoListContext/TodoListContext';
 
-const TodoAddForm: React.FC = () => {
+const TodoAddForm = React.memo(() => {
   const { state, actions } = useTodoListContext();
 
   return (
@@ -23,6 +23,6 @@ const TodoAddForm: React.FC = () => {
       </Button>
     </form>
   );
-};
+});
 
 export default TodoAddForm;

@@ -33,3 +33,19 @@ export type TTodoAction =
   | { type: 'CANCEL_CHANGES' }
   | { type: 'LOAD_TODOS'; payload: Array<ITodoItemData & { id: string }> };
 
+export interface ITodoListViewModel {
+    state: {
+      todos: ITodoEntity[];
+      newTodoDescription: string;
+      pendingChangesCount: number;
+    };
+    actions: {
+      handleAddTodo: (e: React.FormEvent) => void;
+      handleToggleTodo: (id: string) => void;
+      handleUpdateTodoDescription: (id: string, description: string) => void;
+      handleDeleteTodo: (id: string) => void;
+      handleCommitChanges: () => Promise<void>;
+      handleCancelChanges: () => void;
+      handleNewTodoDescriptionChange: (value: string) => void;
+    };
+  }

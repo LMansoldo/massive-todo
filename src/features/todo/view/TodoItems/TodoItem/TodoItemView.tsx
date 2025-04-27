@@ -21,7 +21,7 @@ interface TodoItemViewProps {
   onDelete: () => void;
 }
 
-const TodoItemView: React.FC<TodoItemViewProps> = ({
+const TodoItemView = React.memo<TodoItemViewProps>(({
   completed,
   even,
   isEditing,
@@ -88,6 +88,6 @@ const TodoItemView: React.FC<TodoItemViewProps> = ({
       </Table.Row>
     </>
   );
-};
+});
 
 export default TodoItemView;

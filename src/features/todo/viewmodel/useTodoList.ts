@@ -1,56 +1,65 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTodoContext } from '@features/todo/context/TodoContext';
+import { ITodoListViewModel } from '@features/todo/model/todo.types';
 
-export const useTodoList: any = () => {
+export const useTodoList = (): ITodoListViewModel => {
   const { state, dispatch, commitChanges, cancelChanges } = useTodoContext();
   const [newTodoDescription, setNewTodoDescription] = useState('');
 
-  const handleAddTodo = (e: React.FormEvent) => {
+  const handleAddTodo = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    if (newTodoDescription.trim() !== '') {
-      dispatch({
-        type: 'ADD_TODO',
-        payload: {
-          description: newTodoDescription.trim(),
-          dueDate: new Date()
-        }
-      });
-      setNewTodoDescription('');
-    }
-  };
+    const trimmedDescription = newTodoDescription.trim();
+    if (trimmedDescription === '') return;
 
-  const handleToggleTodo = (id: string) => {
+    dispatch({
+      type: 'ADD_TODO',
+      payload: {
+        description: trimmedDescription,
+        dueDate: new Date()
+      }
+    });
+    setNewTodoDescription('');
+  }, [newTodoDescription, dispatch]);
+
+  const handleToggleTodo = useCallback((id: string) => {
     dispatch({
       type: 'TOGGLE_TODO',
       payload: { id }
     });
-  };
+  }, [dispatch]);
 
-  const handleUpdateTodoDescription = (id: string, description: string) => {
+  const handleUpdateTodoDescription = useCallback((id: string, description: string) => {
+    if (!id || description.trim() === '') {
+      return;
+    }
     dispatch({
       type: 'UPDATE_TODO',
-      payload: { id, description }
+      payload: { id, description: description.trim() }
     });
-  };
+  }, [dispatch]);
 
-  const handleDeleteTodo = (id: string) => {
+  const handleDeleteTodo = useCallback((id: string) => {
     dispatch({
       type: 'DELETE_TODO',
       payload: { id }
     });
-  };
+  }, [dispatch]);
 
   const handleCommitChanges = async () => {
-    await commitChanges();
+    try {
+      await commitChanges();
+    } catch (error) {
+      console.error('Failed to commit changes:', error);
+    }
   };
 
   const handleCancelChanges = () => {
     cancelChanges();
   };
 
-  const handleNewTodoDescriptionChange = (value: string) => {
+  const handleNewTodoDescriptionChange = useCallback((value: string) => {
     setNewTodoDescription(value);
-  };
+  }, []);
 
 
   return {

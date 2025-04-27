@@ -4,7 +4,7 @@ import { useTodoListContext } from '@features/todo/context/TodoListContext/TodoL
 import Button from '@shared/lib/components/Button/Button';
 import { EButtonVariant } from '@shared/enums/button.enum';
 
-const TodoListPendingChanges: React.FC = () => {
+const TodoListPendingChanges = React.memo(() => {
   const { state, actions } = useTodoListContext();
   const count = state.pendingChangesCount;
 
@@ -32,6 +32,6 @@ const TodoListPendingChanges: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default TodoListPendingChanges;
