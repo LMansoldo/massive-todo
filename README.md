@@ -292,7 +292,7 @@ const TodoItems: React.FC = () => {
 
 ```
 # Clone repository
-git clone https://github.com/yourusername/massive-todo.git
+git clone https://github.com/LMansoldo/massive-todo.git
 
 # Install dependencies
 cd massive-todo
