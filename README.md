@@ -10,10 +10,8 @@ A Todo List application built with React and TypeScript. The app supports offlin
    1. [Requirements](#Requirements)
    2. [Implementation Overview](#Implementation-Overview)
    3. [Project Structure](#Project-Structure)
-2. [Design Patterns](#Design-Patterns-and-architetural-decisions)
-3. [Features](#Features)
-4. [Technical Details](#technical-details)
-5. [Getting Started](#Getting-Started)
+2. [Design Patterns and Architectural Decisions](#Design-Patterns-and-Architectural-Decisions)
+3. [Getting Started](#Getting-Started)
 
 ## Screenshots
 
