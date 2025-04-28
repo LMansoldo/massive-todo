@@ -1,5 +1,5 @@
 import React from 'react';
-import { TodoListProvider } from '@features/todo/context/TodoListContext/TodoListContext';
+import { TodoListProvider } from '@features/todo/viewmodel/providers/TodoListProvider';
 import TodoListView from './TodoListView/TodoListView';
 import TodoListPendingChanges from './TodoListPendingChanges/TodoListPendingChanges';
 import TodoAddForm from './TodoAddForm/TodoAddForm';

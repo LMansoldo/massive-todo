@@ -1,4 +1,4 @@
-import { TodoProvider } from '@features/todo/context/TodoContext/Provider';
+import { TodoProvider } from '@features/todo/viewmodel/providers/TodoProvider';
 import TodoListContainer from '@features/todo/view/TodoListContainer';
 function App() {
   return (

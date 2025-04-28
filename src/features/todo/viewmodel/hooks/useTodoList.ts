@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useTodoContext } from '@features/todo/context/TodoContext';
+import { useTodoContext } from '@features/todo/viewmodel/context/TodoContext';
 import { ITodoListViewModel } from '@features/todo/model/types/todo.types';
 
 export const useTodoList = (): ITodoListViewModel => {
