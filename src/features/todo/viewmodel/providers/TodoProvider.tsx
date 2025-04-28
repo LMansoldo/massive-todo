@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { TodoRepositoryFacade } from "@features/todo/model";
-import { initialState, TodoContext, todoReducer } from "@features/todo/context/TodoContext";
-
+import { initialState, TodoContext, todoReducer } from "@features/todo/viewmodel/context/TodoContext";
 
 export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
